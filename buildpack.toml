@@ -1,0 +1,12 @@
+[buildpack]
+name = "Go"
+
+  [publish.Ignore]
+  files = [
+    "test/",
+    "sbin/",
+    "file-cache/",
+    ".gitignore",
+    ".travis.yml",
+    "Makefile"
+  ]
