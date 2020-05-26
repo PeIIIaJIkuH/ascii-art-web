@@ -42,8 +42,8 @@ h1 {
     font-size: 20px;
     resize: none;
     outline: none;
-    margin-bottom: 40px;
-    height: 600px;
+    margin-bottom: 20px;
+    height: 100px;
 }
 
 .textarea::-webkit-scrollbar {
@@ -114,8 +114,7 @@ select {
     border: 2px solid #f4a261;
     display: block;
     overflow: auto;
-    max-height: 650px;
-    height: 650px;
+    height: 500px;
     border-radius: 10px;
     background-color: #1d3557;
     text-align-last: left;
@@ -125,6 +124,12 @@ select {
 
 .output::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.output::-webkit-scrollbar-corner {
+    display: none;
 }
 
 .output::-webkit-scrollbar:active {
@@ -141,7 +146,7 @@ select {
     cursor: pointer;
 }
 
-.back {
+/* .back {
     background-color: #457b9d;
     text-decoration: none;
     display: block;
@@ -161,4 +166,4 @@ select {
 .back:hover {
     background-color: #f4a261;
     color: #457b9d;
-}
+} */
