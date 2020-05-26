@@ -71,8 +71,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		output1 := string(out1)
 
 		fmt.Fprintln(w, output1)
-
-		return
 	}
 
 	file, _ := ioutil.ReadFile("templates/index.html")
