@@ -1,0 +1,164 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #457b9d;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+h1 {
+    display: block;
+}
+
+.title {
+    font-size: 40px;
+    color: #f9efaf;
+    line-height: 0;
+    margin: 50px 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.textarea {
+    width: 100%;
+    display: block;
+    line-height: 1.5;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #f4a261;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(#F9EFAF, #F7E98D);
+    font-size: 20px;
+    resize: none;
+    outline: none;
+    margin-bottom: 40px;
+    height: 600px;
+}
+
+.textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+.textarea::-webkit-scrollbar:active {
+    width: 15px;
+}
+
+.textarea::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #f4a261;
+    cursor: pointer;
+}
+
+
+input[type=submit] {
+    background-color: #457b9d;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    color: #02c39a;
+    border: 2px solid #02c39a;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color .3s linear, color .3s linear;
+}
+
+input[type=submit]:hover {
+    background-color: #02c39a;
+    color: #457b9d;
+}
+
+input[type=color] {
+    appearance: none;
+    border: none;
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    color: #457b9d;
+    border-radius: 5px;
+    background: #f9efaf;
+}
+
+.select {
+    color: #f9efaf;
+}
+
+select {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #457b9d;
+    border-radius: 5px;
+    border: none;
+    background: #f9efaf;
+}
+
+.output {
+    border: 2px solid #f4a261;
+    display: block;
+    overflow: auto;
+    max-height: 650px;
+    height: 650px;
+    border-radius: 10px;
+    background-color: #1d3557;
+    text-align-last: left;
+    padding: 15px;
+    margin-bottom: 40px;
+}
+
+.output::-webkit-scrollbar {
+    width: 10px;
+}
+
+.output::-webkit-scrollbar:active {
+    width: 15px;
+}
+
+.output::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.output::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #f4a261;
+    cursor: pointer;
+}
+
+.back {
+    background-color: #457b9d;
+    text-decoration: none;
+    display: block;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    color: #f4a261;
+    border: 2px solid #f4a261;
+    font-size: 20px;
+    line-height: 0;
+    cursor: pointer;
+    transition: background-color .3s linear, color .3s linear;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.back:hover {
+    background-color: #f4a261;
+    color: #457b9d;
+}

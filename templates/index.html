@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ascii Art Web</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="body">
+    <div class="container">
+        <h1 class="title">Ascii Art</h1>
+        <form action="/output" method="POST" class="form">
+            <div class="select">
+                <label class="select_font" for="font">Font:</label>
+                <select name="font" id="font">
+                    <option value="standard" selected>Standard</option>
+                    <option value="shadow">Shadow</option>
+                    <option value="thinkertoy">Thinkertoy</option>
+                </select>
+                <label for="select_color" for="color">Color:</label>
+                <input type="color" name="color" value="#ffffff">
+            </div>
+
+            <textarea class="textarea" name="text" id="" cols="100" rows="10" minlength="1"></textarea>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
