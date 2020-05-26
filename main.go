@@ -29,6 +29,9 @@ func checkValue(str string) bool {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
+	if _, err := os.Stat("test"); err != nil {
+		fmt.Println(w, "There is no test file.")
+	}
 
 	if r.URL.Path != "/" {
 		w.WriteHeader(http.StatusNotFound)
