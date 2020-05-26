@@ -65,7 +65,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	output := string(out)
 
 	if len(output) == 0 {
-		temp := exec.Command("go test ./test hello")
+		temp := exec.Command("echo", "Hello World!")
 		temp.Stdin = os.Stdin
 		out1, _ := temp.Output()
 		output1 := string(out1)
