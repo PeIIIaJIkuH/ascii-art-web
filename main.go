@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -11,9 +10,14 @@ import (
 	"strings"
 )
 
-var index = template.Must(template.ParseFiles("templates/index.html"))
-
 func indexHandler(w http.ResponseWriter, r *http.Request) {
+
+	if r.URL.Path != "/" {
+		w.WriteHeader(http.StatusNotFound)
+		http.ServeFile(w, r, "templates/404.html")
+		return
+	}
+
 	value := r.FormValue("text")
 	font := r.FormValue("font")
 	color := r.FormValue("color")
