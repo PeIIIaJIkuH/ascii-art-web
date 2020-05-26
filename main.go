@@ -10,6 +10,24 @@ import (
 	"strings"
 )
 
+func alphabet() string {
+	str := ""
+	for i := 32; i <= 126; i++ {
+		str += string(rune(i))
+	}
+	return str
+}
+
+func checkValue(str string) bool {
+	alpha := alphabet()
+	for i := range str {
+		if str[i] != '\n' && str[i] != '\r' && !strings.Contains(alpha, string(str[i])) {
+			return false
+		}
+	}
+	return true
+}
+
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 	if r.URL.Path != "/" {
@@ -20,7 +38,27 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 	value := r.FormValue("text")
 	font := r.FormValue("font")
+	if font == "" {
+		font = "standard"
+	}
 	color := r.FormValue("color")
+	if color == "" {
+		color = "#ffffff"
+	}
+
+	fmt.Println(font)
+
+	if _, err := os.Stat(font + ".txt"); err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		http.ServeFile(w, r, "templates/500.html")
+		return
+	}
+
+	if !checkValue(value) {
+		w.WriteHeader(http.StatusBadRequest)
+		http.ServeFile(w, r, "templates/400.html")
+		return
+	}
 
 	cmd := exec.Command("./test", value, font)
 	cmd.Stdin = os.Stdin
