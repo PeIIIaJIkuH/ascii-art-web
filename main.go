@@ -44,10 +44,10 @@ func outputHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// port := os.Getenv("PORT")
-	// if port == "" {
-	// 	port = "3000"
-	// }
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
 
 	mux := http.NewServeMux()
 
@@ -57,10 +57,10 @@ func main() {
 	mux.HandleFunc("/", indexHandler)
 	mux.HandleFunc("/output", outputHandler)
 
-	ip := os.Getenv("APP_IP")
-	port := os.Getenv("APP_PORT")
+	// ip := os.Getenv("APP_IP")
+	// port := os.Getenv("APP_PORT")
 
-	fmt.Println(ip + ":" + port)
+	fmt.Println(":" + port)
 
-	log.Fatal(http.ListenAndServe(ip+":"+port, mux))
+	log.Fatal(http.ListenAndServe(":"+port, mux))
 }
