@@ -29,10 +29,6 @@ func checkValue(str string) bool {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	if _, err := os.Stat("test"); err != nil {
-		fmt.Println(w, "There is no test file.")
-	}
-
 	if r.URL.Path != "/" {
 		w.WriteHeader(http.StatusNotFound)
 		http.ServeFile(w, r, "templates/404.html")
@@ -67,6 +63,11 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	cmd.Stdin = os.Stdin
 	out, _ := cmd.Output()
 	output := string(out)
+
+	if len(output) == 0 {
+		fmt.Fprintln(w, "No output!")
+		return
+	}
 
 	file, _ := ioutil.ReadFile("templates/index.html")
 	str := string(file)
