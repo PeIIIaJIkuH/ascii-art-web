@@ -66,6 +66,14 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 	if len(output) == 0 {
 		fmt.Fprintln(w, "No output!")
+
+		temp := exec.Command("ls")
+		temp.Stdin = os.Stdin
+		out1, _ := temp.Output()
+		output1 := string(out1)
+
+		fmt.Fprintln(w, output1)
+
 		return
 	}
 
