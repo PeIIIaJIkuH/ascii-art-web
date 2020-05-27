@@ -59,9 +59,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	cmd := exec.Command("./test", value, font)
-	cmd.Stdin = os.Stdin
-	out, _ := cmd.Output()
+	out, _ := exec.Command("./test", value, font).Output()
 	output := string(out)
 
 	file, _ := ioutil.ReadFile("templates/index.html")
