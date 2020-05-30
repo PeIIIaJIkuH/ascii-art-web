@@ -1,3 +1,5 @@
+{{ define "index"}}
+
 <!DOCTYPE html>
 <html>
 
@@ -13,24 +15,35 @@
         <h1 class="title">Ascii Art Web</h1>
         <form action="/" method="POST" class="form">
             <div class="select">
-                <label class="select_font" for="font">Font:</label>
-                <select name="font" id="font">
-                    <option value="standard" selected>Standard</option>
-                    <option value="shadow">Shadow</option>
-                    <option value="thinkertoy">Thinkertoy</option>
-                    <option value="graffiti">Graffiti</option>
-                </select>
-                <label for="select_color" for="color">Color:</label>
-                <input type="color" name="color" value="#ffffff">
+                <div class="font-wrapper">
+                    <label class="select_font" for="font">Font:</label>
+                    <select name="font" id="font">
+                        <option value="standard" selected>Standard</option>
+                        <option value="shadow">Shadow</option>
+                        <option value="thinkertoy">Thinkertoy</option>
+                        <option value="graffiti">Graffiti</option>
+                    </select>
+                </div>
+                <div class="color-wrapper">
+                    <label class="select_color" for="color">Color:</label>
+                    <input type="color" name="color" value="#ffffff">
+                </div>
+                <div class="output-wrapper">
+                    <label for="select_output_format">Output format:</label>
+                    <select name="output_format" id="output_format">
+                        <option value="none">none</option>
+                        <option value="txt">txt</option>
+                        <option value="pdf">pdf</option>
+                    </select>
+                </div>
             </div>
-
             <textarea class="textarea" name="text" id="text" cols="100" rows="10" minlength="1" placeholder="Only english text"></textarea>
             <input type="submit" value="Submit">
         </form>
-        <pre class="output">
-            
-        </pre>
+        <pre class="output" style="color:{{ .Color }};">{{ if .HasOutput }}{{ .Text }}{{ end }}</pre>
     </div>
 </body>
 
 </html>
+
+{{ end }}

@@ -10,6 +10,8 @@ body {
     margin: 0;
     padding: 0;
     font-size: 16px;
+    height: 100vh;
+    width: 100vw;
 }
 
 h1 {
@@ -20,14 +22,23 @@ h1 {
     font-size: 40px;
     color: #f9efaf;
     line-height: 0;
-    margin: 50px 0;
+    margin: 40px 0;
+    max-height: 10vh;
 }
 
 .container {
+    padding: 0 15px;
     width: 100%;
     max-width: 1100px;
+    height: 100vh;
+    width: 100vw;
     margin: 0 auto;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    flex: 1 1 0;
 }
 
 .textarea {
@@ -64,6 +75,9 @@ h1 {
     cursor: pointer;
 }
 
+.form {
+    max-height: 40vh;
+}
 
 input[type=submit] {
     background-color: #457b9d;
@@ -111,7 +125,6 @@ select {
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
-    margin-bottom: 25px;
     color: #457b9d;
     border-radius: 5px;
     border: none;
@@ -119,17 +132,23 @@ select {
     transition: background .1s linear, color .1s linear;
 }
 
+.font-wrapper, .color-wrapper, .output-wrapper {
+    margin-bottom: 5px;
+}
+
 .output {
     border: 2px solid #f4a261;
     display: block;
     overflow: auto;
-    height: 500px;
+    min-height: 186px;
+    max-height: 50vh;
+    height: 100%;
     border-radius: 10px;
     background: linear-gradient(#1d3557, #102849);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align-last: left;
     padding: 15px;
-    margin-bottom: 40px;
+    width: 100%;
 }
 
 .output::-webkit-scrollbar {
@@ -183,7 +202,7 @@ select {
   .notfound .notfound-404 h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 230px;
-    margin: 0px;
+    margin: 0;
     font-weight: 900;
     position: absolute;
     left: 50%;
