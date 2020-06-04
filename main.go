@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	art "github.com/peiiiajikuh/ascii-art-web/structs"
+	art "ascii-art-web/structs"
 )
 
 type output struct {
@@ -42,6 +42,11 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if font == "" {
 		font = "standard"
 	}
+	if font != "standard" && font != "shadow" && font != "thinkertoy" {
+		w.WriteHeader(http.StatusInternalServerError)
+		http.ServeFile(w, r, "templates/500.html")
+		return
+	}
 	color := r.FormValue("color")
 	if color == "" {
 		color = "#ffffff"
@@ -54,16 +59,19 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := output{true, art.AsciiArt(value, font), color}
+	text := art.AsciiArt(value, font)
+	if text == "error" {
+		w.WriteHeader(http.StatusInternalServerError)
+		http.ServeFile(w, r, "templates/500.html")
+		return
+	}
+
+	data := output{true, text, color}
 
 	if exportFormat == "txt" {
 		w.Header().Set("Content-Disposition", "attachement; filename=output.txt")
 		w.Header().Set("Content-Length", strconv.Itoa(len(data.Text)))
 		http.ServeContent(w, r, "output.txt", time.Now(), bytes.NewReader([]byte(data.Text)))
-	} else if exportFormat == "pdf" {
-		w.WriteHeader(http.StatusInternalServerError)
-		http.ServeFile(w, r, "templates/500.html")
-		return
 	}
 
 	t, err := template.ParseFiles("templates/index.html")
@@ -87,7 +95,7 @@ func main() {
 
 	mux.HandleFunc("/", indexHandler)
 
-	fmt.Println(":" + port)
+	fmt.Println("Listening on :" + port)
 
 	log.Fatal(http.ListenAndServe(":"+port, mux))
 }

@@ -113,11 +113,20 @@ func AsciiArt(str, font string) string {
 	a := art{}
 	a.init()
 	b := banner{}
-	b.init("banners/standard.txt")
+	err := b.init("banners/standard.txt")
+	if err != nil {
+		return "error"
+	}
 	if font == "shadow" {
-		b.init("banners/shadow.txt")
+		err = b.init("banners/shadow.txt")
+		if err != nil {
+			return "error"
+		}
 	} else if font == "thinkertoy" {
-		b.init("banners/thinkertoy.txt")
+		err = b.init("banners/thinkertoy.txt")
+		if err != nil {
+			return "error"
+		}
 	}
 
 	a.apply(str, b)

@@ -2,7 +2,6 @@ package art
 
 import (
 	"io/ioutil"
-	"log"
 	"strings"
 )
 
@@ -14,12 +13,11 @@ func (b *banner) clear() {
 	b.arr = [][]string{}
 }
 
-func (b *banner) init(filename string) {
+func (b *banner) init(filename string) error {
 	b.clear()
 	file, err := ioutil.ReadFile(filename)
 	if err != nil {
-		log.Fatal(err)
-		return
+		return err
 	}
 	str := string(file)
 	for i := 0; i < 96; i++ {
@@ -31,6 +29,7 @@ func (b *banner) init(filename string) {
 			str = str[strings.Index(str, "\n")+1:]
 		}
 	}
+	return nil
 }
 
 func isEqual(a1, a2 []string) bool {
