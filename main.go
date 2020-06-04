@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	art "ascii-art-web/structs"
+	art "github.com/peiiiajikuh/ascii-art-web/structs"
 )
 
 type output struct {
